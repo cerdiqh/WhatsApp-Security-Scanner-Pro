@@ -93,9 +93,24 @@
         document.getElementById('threatIndicators').innerHTML = "<p>Scanning message for threats...</p>";
         
         // Simulate processing delay
-        setTimeout(() => {
+        setTimeout(async () => {
             const results = processAnalysis(message, phone, name, businessType);
             displayResults(results);
+
+            // Run additional server-side validation
+            try {
+                const res = await fetch('/scan', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message, phone })
+                });
+                const data = await res.json();
+                if (data.isScam) {
+                    alert('⚠️ This number appears in the scam database');
+                }
+            } catch (err) {
+                console.error('Server validation failed', err);
+            }
         }, 1500);
     }
 
