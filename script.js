@@ -2,10 +2,10 @@
         const scamPatterns = {
             // Nigerian-specific urgency patterns
             urgencyWords: [
-                'urgent', 'immediately', 'asap', 'today only', 'quick', 'fast', 'hurry', 'emergency', 
-                'before', 'deadline', 'traveling', 'leaving', 'flight', '
-  
-  },
+                'urgent', 'immediately', 'asap', 'today only', 'quick', 'fast', 'hurry', 'emergency',
+                'before', 'deadline', 'traveling', 'leaving', 'flight', 'last chance', 'now',
+                'limited time', 'soon'
+            ],
         // Bulk purchase requests
         bulk: {
             regex: /bulk|large quantity|wholesale|500|1000|many pieces|full container/i,
@@ -408,8 +408,8 @@
         // Update stats with random increments
         setInterval(() => {
             document.getElementById('threatsDetected').textContent = 
-                (parseInt(document.getElementById('threatsDetected').textContent) + Math.floor(Math.random() * 3);
+                (parseInt(document.getElementById('threatsDetected').textContent) + Math.floor(Math.random() * 3));
             document.getElementById('businessesProtected').textContent = 
-                (parseInt(document.getElementById('businessesProtected').textContent) + Math.floor(Math.random() * 2);
+                (parseInt(document.getElementById('businessesProtected').textContent) + Math.floor(Math.random() * 2));
         }, 5000);
     });
