@@ -1,5 +1,5 @@
         // Enhanced fraud detection with Nigerian-specific patterns
-        const fraudPatterns = {
+        const scamPatterns = {
             // Nigerian-specific urgency patterns
             urgencyWords: [
                 'urgent', 'immediately', 'asap', 'today only', 'quick', 'fast', 'hurry', 'emergency', 
