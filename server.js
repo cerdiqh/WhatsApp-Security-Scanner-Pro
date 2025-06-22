@@ -362,7 +362,7 @@ app.post('/api/integrations/email', authenticateToken, (req, res) => {
 // Integration Helper Functions
 async function testSlackWebhook(webhookUrl, channel, username) {
     const testMessage = {
-        text: '🔒 WhatsApp Security Scanner Pro integration test successful!',
+        text: '🔒 ScamBuster integration test successful!',
         channel: channel || '#general',
         username: username || 'Security Scanner',
         icon_emoji: ':shield:'

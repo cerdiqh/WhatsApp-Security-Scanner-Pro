@@ -1,7 +1,7 @@
 {
   "name": "scambuster",
   "version": "1.0.0",
-  "description": "Advanced AI-powered scam detection scanner for protecting businesses from Nigerian scams",
+  "description": "AI-powered WhatsApp scam detection and prevention tool",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

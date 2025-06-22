@@ -1705,7 +1705,7 @@ function downloadReport(exportData) {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `security-report-${new Date().toISOString().split('T')[0]}.txt`;
+    a.download = `ScamBuster-User-Report-${new Date().toISOString().split('T')[0]}.txt`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -1715,7 +1715,7 @@ function downloadReport(exportData) {
 }
 
 function generateReportContent(data) {
-    let content = 'WhatsApp Security Scanner Pro - User Report\n';
+    let content = 'ScamBuster - User Report\n';
     content += '='.repeat(50) + '\n\n';
     
     content += `User: ${data.userInfo.name} (${data.userInfo.email})\n`;
@@ -2034,7 +2034,7 @@ async function testWebhook(webhookId) {
             event: 'test_webhook',
             timestamp: new Date().toISOString(),
             data: {
-                message: 'This is a test webhook from WhatsApp Security Scanner Pro',
+                message: 'This is a test webhook from ScamBuster',
                 test: true
             }
         };
