@@ -1,0 +1,52 @@
+[
+  {
+    "id": "1703123456789",
+    "userId": "user123",
+    "userName": "John Doe",
+    "phoneNumber": "+2348012345678",
+    "message": "Hello sir, I want to buy your products in large quantity. Please send your account details for payment.",
+    "scamType": "bulk_purchase",
+    "description": "Fake bulk order request asking for bank details",
+    "evidence": "Screenshot of conversation",
+    "status": "verified",
+    "verifiedBy": "admin1",
+    "verificationDate": "2024-01-15T10:30:00.000Z",
+    "upvotes": 15,
+    "downvotes": 2,
+    "votes": [
+      {
+        "userId": "user456",
+        "vote": "up"
+      },
+      {
+        "userId": "user789",
+        "vote": "up"
+      }
+    ],
+    "createdAt": "2024-01-15T09:00:00.000Z",
+    "updatedAt": "2024-01-15T10:30:00.000Z"
+  },
+  {
+    "id": "1703123456790",
+    "userId": "user456",
+    "userName": "Jane Smith",
+    "phoneNumber": "+2348098765432",
+    "message": "Dear sir, I am Prince from Nigeria. I have $10 million to transfer to your account. Please help me.",
+    "scamType": "nigerian_prince",
+    "description": "Classic Nigerian prince scam",
+    "evidence": "Message screenshot",
+    "status": "pending",
+    "verifiedBy": null,
+    "verificationDate": null,
+    "upvotes": 8,
+    "downvotes": 1,
+    "votes": [
+      {
+        "userId": "user123",
+        "vote": "up"
+      }
+    ],
+    "createdAt": "2024-01-15T11:00:00.000Z",
+    "updatedAt": "2024-01-15T11:00:00.000Z"
+  }
+]

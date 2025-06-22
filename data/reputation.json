@@ -1,0 +1,30 @@
+[
+  {
+    "userId": "user123",
+    "points": 150,
+    "level": "Trusted",
+    "reportsSubmitted": 5,
+    "reportsVerified": 3
+  },
+  {
+    "userId": "user456",
+    "points": 75,
+    "level": "Contributor",
+    "reportsSubmitted": 3,
+    "reportsVerified": 1
+  },
+  {
+    "userId": "user789",
+    "points": 25,
+    "level": "Active",
+    "reportsSubmitted": 1,
+    "reportsVerified": 0
+  },
+  {
+    "userId": "admin1",
+    "points": 500,
+    "level": "Expert",
+    "reportsSubmitted": 0,
+    "reportsVerified": 20
+  }
+]

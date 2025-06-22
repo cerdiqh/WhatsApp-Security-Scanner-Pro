@@ -3,361 +3,413 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WhatsApp Business Security Scanner Pro - Nigeria</title>
+    <title>ScamBuster - Protect Your Business</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>
-                <span class="whatsapp-icon">🛡️</span>
-                WhatsApp Security Scanner Pro
-            </h1>
-            <p>Advanced Business Protection Against WhatsApp Fraud - Powered by AI</p>
-        </div>
-
-        <div class="subscription-banner">
-            🎯 Protect Your Business Today! Join 150+ Nigerian Businesses Already Using Our Scanner
-        </div>
-
-        <div class="main-content">
-            <div class="scanner-section">
-                <h2>🔍 Advanced Message Scanner</h2>
-                <form id="scanForm">
-                    <div class="form-group">
-                        <label for="messageText">WhatsApp Message to Analyze:</label>
-                        <textarea id="messageText" placeholder="Paste suspicious WhatsApp message here...
-
-Example: 'Hello sir, I want to buy your products in large quantity. Send your account details now for urgent payment. I'm traveling today.'"></textarea>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="senderNumber">Sender's Phone Number:</label>
-                        <input type="text" id="senderNumber" placeholder="+234XXXXXXXXXX">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="senderName">Sender's Name (if available):</label>
-                        <input type="text" id="senderName" placeholder="Enter sender's name">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="businessType">Your Business Type:</label>
-                        <select id="businessType" style="width: 100%; padding: 15px; border: 2px solid #dee2e6; border-radius: 10px;">
-                            <option value="retail">Retail/Shopping</option>
-                            <option value="services">Services</option>
-                            <option value="manufacturing">Manufacturing</option>
-                            <option value="wholesale">Wholesale</option>
-                            <option value="food">Food & Beverage</option>
-                            <option value="tech">Technology</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
-                    
-                    <button type="submit" class="scan-btn">🔍 Scan for Threats</button>
-                    
-                    <div class="action-buttons">
-                        <button type="button" class="btn-secondary" onclick="uploadImage()">📷 Scan Image</button>
-                        <button type="button" class="btn-secondary" onclick="reportScammer()">🚨 Report Scammer</button>
-                    </div>
-                </form>
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <i class="fas fa-shield-alt"></i>
             </div>
+            <div class="loading-text">ScamBuster</div>
+            <div class="loading-spinner"></div>
+        </div>
+    </div>
 
-            <div class="results-section">
-                <h2>⚡ Security Analysis Results</h2>
-                <div id="results">
-                    <div class="risk-meter">
-                        <h3>Risk Assessment</h3>
-                        <div class="risk-level" id="riskLevel">Ready to Scan</div>
-                        <div class="confidence-score" id="confidenceScore">Confidence: --</div>
-                        <div class="risk-bar">
-                            <div class="risk-fill" id="riskFill" style="width: 0%;"></div>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-shield-alt"></i>
+                <span>ScamBuster</span>
+            </div>
+            <div class="nav-menu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#pricing" class="nav-link">Pricing</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#developer-credits" class="nav-link">Developer</a>
+                <a href="login.html" class="nav-link login-btn">Login</a>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background">
+            <div class="hero-particles"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    <span class="gradient-text">Protect Your Business</span>
+                    <br>From Scams
+                </h1>
+                <p class="hero-subtitle">
+                    Advanced AI-powered scam detection scanner that identifies and prevents Nigerian business scams in real-time. 
+                    Trusted by 150+ businesses across Nigeria.
+                </p>
+                <div class="hero-buttons">
+                    <a href="register.html" class="btn-primary">
+                        <i class="fas fa-user-plus"></i>
+                        Get Started Free
+                    </a>
+                    <a href="login.html" class="btn-secondary">
+                        <i class="fas fa-sign-in-alt"></i>
+                        Sign In
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">99.2%</span>
+                        <span class="stat-label">Accuracy Rate</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">150+</span>
+                        <span class="stat-label">Businesses Protected</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">₦8.2M</span>
+                        <span class="stat-label">Money Saved</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="phone-mockup">
+                    <div class="phone-screen">
+                        <div class="chat-message incoming">
+                            <div class="message-bubble">
+                                "Hello sir, I want to buy your products in large quantity..."
+                            </div>
+                            <div class="message-time">2:30 PM</div>
                         </div>
-                        <p id="riskDescription">Enter a message above to get started</p>
-                    </div>
-
-                    <div class="language-detection" id="languageDetection" style="display: none;">
-                        <h4>🌍 Language Analysis</h4>
-                        <p id="detectedLanguage">Language: English</p>
-                        <p id="grammarAnalysis">Grammar Score: --</p>
-                    </div>
-
-                    <div class="phone-intel" id="phoneIntel" style="display: none;">
-                        <h4>📱 Phone Number Intelligence</h4>
-                        <p id="numberLocation">Location: --</p>
-                        <p id="numberCarrier">Carrier: --</p>
-                        <p id="numberStatus">Status: --</p>
-                    </div>
-
-                    <div class="threat-indicators" id="threatIndicators">
-                        <h4>🛡️ Threat Indicators</h4>
-                        <p>Analysis results will appear here...</p>
-                    </div>
-
-                    <div style="margin-top: 20px;">
-                        <button class="btn-secondary" onclick="saveReport()" style="width: 48%; margin-right: 4%;">💾 Save Report</button>
-                        <button class="btn-secondary" onclick="shareReport()" style="width: 48%;">📤 Share Alert</button>
+                        <div class="chat-message outgoing">
+                            <div class="message-bubble">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Scanning for threats...</span>
+                            </div>
+                            <div class="message-time">2:31 PM</div>
+                        </div>
+                        <div class="security-alert">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <span>HIGH RISK DETECTED</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="advanced-features">
-            <div class="feature-card">
-                <h3>🤖 AI-Powered Detection</h3>
-                <ul class="feature-list" style="list-style: none; padding: 0;">
-                    <li>✅ Multi-language scam detection (English, Hausa, Pidgin)</li>
-                    <li>✅ Behavioral pattern analysis</li>
-                    <li>✅ Real-time threat intelligence</li>
-                    <li>✅ 99.2% accuracy rate</li>
-                </ul>
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Choose ScamBuster?</h2>
+                <p>Advanced protection powered by cutting-edge technology</p>
             </div>
-
-            <div class="feature-card">
-                <h3>📱 Phone Intelligence</h3>
-                <ul class="feature-list" style="list-style: none; padding: 0;">
-                    <li>✅ Number verification & validation</li>
-                    <li>✅ Carrier and location detection</li>
-                    <li>✅ Blacklist checking</li>
-                    <li>✅ Social media profile linking</li>
-                </ul>
-            </div>
-
-            <div class="feature-card">
-                <h3>📊 Business Intelligence</h3>
-                <ul class="feature-list" style="list-style: none; padding: 0;">
-                    <li>✅ Monthly threat reports</li>
-                    <li>✅ Industry-specific analysis</li>
-                    <li>✅ Trend forecasting</li>
-                    <li>✅ ROI tracking</li>
-                </ul>
-            </div>
-
-            <div class="feature-card">
-                <h3>🚨 Real-Time Alerts</h3>
-                <ul class="feature-list" style="list-style: none; padding: 0;">
-                    <li>✅ SMS & Email notifications</li>
-                    <li>✅ WhatsApp alerts</li>
-                    <li>✅ Emergency contacts</li>
-                    <li>✅ Threat escalation</li>
-                </ul>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>AI-Powered Detection</h3>
+                    <p>Advanced machine learning algorithms detect 99.2% of scams with real-time analysis</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Phone Intelligence</h3>
+                    <p>Verify phone numbers, check blacklists, and analyze carrier information instantly</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Business Analytics</h3>
+                    <p>Track threats, generate reports, and monitor your business security metrics</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <h3>Real-Time Alerts</h3>
+                    <p>Get instant notifications via SMS, email, and WhatsApp when threats are detected</p>
+                </div>
             </div>
         </div>
+    </section>
 
-        <div class="subscription-tiers">
-            <h2 style="text-align: center; margin-bottom: 30px;">💎 Choose Your Protection Plan</h2>
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <div class="section-header">
+                <h2>Choose Your Protection Plan</h2>
+                <p>Flexible plans designed for businesses of all sizes</p>
+            </div>
             <div class="pricing-grid">
                 <div class="pricing-card">
-                    <h3>Basic Shield</h3>
-                    <div class="price">₦2,500<span style="font-size: 0.4em;">/month</span></div>
-                    <ul class="feature-list">
-                        <li>50 message scans per month</li>
-                        <li>Basic threat detection</li>
-                        <li>Email support</li>
-                        <li>Educational resources</li>
+                    <div class="pricing-header">
+                        <h3>Basic Shield</h3>
+                        <div class="price">₦2,500<span>/month</span></div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> 50 message scans per month</li>
+                        <li><i class="fas fa-check"></i> Basic threat detection</li>
+                        <li><i class="fas fa-check"></i> Email support</li>
+                        <li><i class="fas fa-check"></i> Educational resources</li>
                     </ul>
-                    <button class="subscribe-btn" onclick="subscribe('basic')">Start Free Trial</button>
+                    <a href="register.html" class="btn-secondary">Start Free Trial</a>
                 </div>
 
                 <div class="pricing-card featured">
-                    <h3>Pro Guard</h3>
-                    <div class="price">₦5,500<span style="font-size: 0.4em;">/month</span></div>
-                    <ul class="feature-list">
-                        <li>Unlimited message scans</li>
-                        <li>Advanced AI detection</li>
-                        <li>Phone number intelligence</li>
-                        <li>Real-time alerts</li>
-                        <li>Monthly reports</li>
-                        <li>Priority support</li>
+                    <div class="pricing-badge">Most Popular</div>
+                    <div class="pricing-header">
+                        <h3>Pro Guard</h3>
+                        <div class="price">₦5,500<span>/month</span></div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Unlimited message scans</li>
+                        <li><i class="fas fa-check"></i> Advanced AI detection</li>
+                        <li><i class="fas fa-check"></i> Phone number intelligence</li>
+                        <li><i class="fas fa-check"></i> Real-time alerts</li>
+                        <li><i class="fas fa-check"></i> Monthly reports</li>
+                        <li><i class="fas fa-check"></i> Priority support</li>
                     </ul>
-                    <button class="subscribe-btn" onclick="subscribe('pro')">Most Popular</button>
+                    <a href="register.html" class="btn-primary">Get Started</a>
                 </div>
 
                 <div class="pricing-card">
-                    <h3>Enterprise Fortress</h3>
-                    <div class="price">₦15,000<span style="font-size: 0.4em;">/month</span></div>
-                    <ul class="feature-list">
-                        <li>Everything in Pro Guard</li>
-                        <li>Multiple team members</li>
-                        <li>Custom threat patterns</li>
-                        <li>API access</li>
-                        <li>Dedicated support</li>
-                        <li>Training workshops</li>
+                    <div class="pricing-header">
+                        <h3>Enterprise Fortress</h3>
+                        <div class="price">₦15,000<span>/month</span></div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Everything in Pro Guard</li>
+                        <li><i class="fas fa-check"></i> Multiple team members</li>
+                        <li><i class="fas fa-check"></i> Custom threat patterns</li>
+                        <li><i class="fas fa-check"></i> API access</li>
+                        <li><i class="fas fa-check"></i> Dedicated support</li>
+                        <li><i class="fas fa-check"></i> Training workshops</li>
                     </ul>
-                    <button class="subscribe-btn" onclick="subscribe('enterprise')">Contact Sales</button>
+                    <a href="register.html" class="btn-secondary">Contact Sales</a>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-number" id="threatsDetected">1,247</div>
-                <div>Threats Detected</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number" id="businessesProtected">152</div>
-                <div>Businesses Protected</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number" id="moneySaved">₦8.2M</div>
-                <div>Money Saved</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">99.2%</div>
-                <div>Accuracy Rate</div>
-            </div>
-        </div>
-
-        <div class="education-section">
-            <h2>📚 Cybersecurity Education Center</h2>
-            <div class="tabs">
-                <button class="tab active" onclick="showTab('common-scams')">Nigerian Scams</button>
-                <button class="tab" onclick="showTab('prevention-tips')">Protection Tips</button>
-                <button class="tab" onclick="showTab('scam-database')">Scam Database</button>
-                <button class="tab" onclick="showTab('report-scam')">Report & Help</button>
-                <button class="tab" onclick="showTab('training')">Free Training</button>
-            </div>
-
-            <div id="common-scams" class="tab-content active">
-                <h3>🚨 Top WhatsApp Scams Targeting Nigerian Businesses</h3>
-                <div class="indicator danger">
-                    <span>⚠️</span>
-                    <div>
-                        <strong>Fake Bulk Buyer (Lagos Special):</strong> Scammer claims to be from Lagos/Abuja wanting large quantities. Creates urgency with travel stories. Requests account details immediately.
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-shield-alt"></i>
                     </div>
+                    <div class="stat-number">1,247</div>
+                    <div class="stat-label">Threats Detected</div>
                 </div>
-                <div class="indicator danger">
-                    <span>⚠️</span>
-                    <div>
-                        <strong>Government Contract Scam:</strong> Pretends to be government contractor needing supplies urgently. Uses official-sounding language and fake letterheads.
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-building"></i>
                     </div>
+                    <div class="stat-number">152</div>
+                    <div class="stat-label">Businesses Protected</div>
                 </div>
-                <div class="indicator danger">
-                    <span>⚠️</span>
-                    <div>
-                        <strong>Foreign Buyer Fraud:</strong> Claims to be international buyer. Sends fake payment confirmations from foreign banks that will "take time to reflect."
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-money-bill-wave"></i>
                     </div>
+                    <div class="stat-number">₦8.2M</div>
+                    <div class="stat-label">Money Saved</div>
                 </div>
-                <div class="indicator danger">
-                    <span>⚠️</span>
-                    <div>
-                        <strong>Overpayment + Courier Scam:</strong> "Accidentally" overpays, asks for refund to "courier" who will collect goods. Both buyer and courier are same scammer.
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-chart-line"></i>
                     </div>
-                </div>
-            </div>
-
-            <div id="prevention-tips" class="tab-content">
-                <h3>🛡️ Nigerian Business Protection Strategies</h3>
-                <div class="indicator safe">
-                    <span>✅</span>
-                    <div>
-                        <strong>The Lagos Rule:</strong> If someone claims to be from Lagos/Abuja but can't video call or provide verifiable business address, be suspicious.
-                    </div>
-                </div>
-                <div class="indicator safe">
-                    <span>✅</span>
-                    <div>
-                        <strong>Bank Confirmation Protocol:</strong> Never release goods until your bank confirms payment. Screenshots can be faked easily.
-                    </div>
-                </div>
-                <div class="indicator safe">
-                    <span>✅</span>
-                    <div>
-                        <strong>WhatsApp Business Verification:</strong> Only deal with WhatsApp Business accounts for large orders. Personal accounts are red flags.
-                    </div>
-                </div>
-                <div class="indicator safe">
-                    <span>✅</span>
-                    <div>
-                        <strong>Local Pickup Preference:</strong> For new customers, suggest pickup from your location. Scammers rarely agree to this.
-                    </div>
-                </div>
-            </div>
-
-            <div id="scam-database" class="tab-content">
-                <h3>📋 Recent Scam Reports Database</h3>
-                <div class="scam-database" id="scamDatabase">
-                    <div class="scam-entry">
-                        <strong>+234903****78</strong> - Fake bulk buyer claiming urgent order for Kano market
-                        <br><small>Reported: 2 days ago | Verified scammer</small>
-                    </div>
-                    <div class="scam-entry">
-                        <strong>+234817****23</strong> - Government contract fraud targeting food suppliers
-                        <br><small>Reported: 5 days ago | Blacklisted</small>
-                    </div>
-                    <div class="scam-entry">
-                        <strong>+234705****45</strong> - Overpayment scam with fake transfer receipts
-                        <br><small>Reported: 1 week ago | Multiple reports</small>
-                    </div>
-                    <div class="scam-entry">
-                        <strong>+1234****567</strong> - Foreign number claiming Dubai business connection
-                        <br><small>Reported: 2 weeks ago | International scammer</small>
-                    </div>
-                </div>
-                <button class="btn-secondary" onclick="loadMoreScams()" style="width: 100%; margin-top: 15px;">Load More Reports</button>
-            </div>
-
-            <div id="report-scam" class="tab-content">
-                <h3>📞 Report Scammers & Get Help</h3>
-                <div class="indicator warning">
-                    <span>📞</span>
-                    <div>
-                        <strong>EFCC Cybercrime:</strong> 0809-93-32-322 | report@efccnigeria.gov.ng
-                    </div>
-                </div>
-                <div class="indicator warning">
-                    <span>📞</span>
-                    <div>
-                        <strong>Nigeria Police Cybercrime:</strong> cybercrime@npf.gov.ng | 199 (Emergency)
-                    </div>
-                </div>
-                <div class="indicator warning">
-                    <span>📞</span>
-                    <div>
-                        <strong>Our 24/7 Scam Hotline:</strong> +234-800-SCAM-HELP (Free calls)
-                    </div>
-                </div>
-                <button class="btn-secondary" onclick="quickReport()" style="width: 100%; margin-top: 15px;">🚨 Quick Report Scammer</button>
-            </div>
-
-            <div id="training" class="tab-content">
-                <h3>🎓 Free Cybersecurity Training</h3>
-                <div class="indicator safe">
-                    <span>📚</span>
-                    <div>
-                        <strong>WhatsApp Business Security Course:</strong> 2-hour online course covering all major threats
-                        <br><button class="btn-secondary" style="margin-top: 10px;">Start Free Course</button>
-                    </div>
-                </div>
-                <div class="indicator safe">
-                    <span>🏆</span>
-                    <div>
-                        <strong>Cybersecurity Certificate:</strong> Get certified in business cybersecurity
-                        <br><button class="btn-secondary" style="margin-top: 10px;">View Certificate Program</button>
-                    </div>
-                </div>
-                <div class="indicator safe">
-                    <span>📅</span>
-                    <div>
-                        <strong>Weekly Webinars:</strong> Live training sessions every Thursday 6PM WAT
-                        <br><button class="btn-secondary" style="margin-top: 10px;">Register for Next Session</button>
-                    </div>
+                    <div class="stat-number">99.2%</div>
+                    <div class="stat-label">Accuracy Rate</div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Modal for reports -->
-    <div id="reportModal" class="modal">
-        <div class="modal-content">
-            <button class="close-modal" onclick="closeModal()">&times;</button>
-            <h3>📊 Threat Analysis Report</h3>
-            <div id="reportContent">
-                <!-- Report content will be generated here -->
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Protect Your Business?</h2>
+                <p>Join thousands of Nigerian businesses already using ScamBuster to stay safe from business scams.</p>
+                <div class="cta-buttons">
+                    <a href="register.html" class="btn-primary">
+                        <i class="fas fa-rocket"></i>
+                        Start Free Trial
+                    </a>
+                    <a href="login.html" class="btn-secondary">
+                        <i class="fas fa-sign-in-alt"></i>
+                        Sign In
+                    </a>
+                </div>
             </div>
-            <button class="btn-secondary" onclick="downloadReport()" style="width: 100%; margin-top: 15px;">💾 Download PDF Report</button>
         </div>
-    </div>
+    </section>
 
-<script src="script.js"></script>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>ScamBuster</span>
+                    </div>
+                    <p>Advanced business security protection for Nigerian businesses.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#about">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 ScamBuster. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Developer Credits Section -->
+    <section id="developer-credits" class="developer-credits">
+        <div class="credits-container">
+            <div class="credits-header">
+                <h2 class="credits-title">🎬 Meet the Developer</h2>
+                <p class="credits-subtitle">The mind behind ScamBuster</p>
+            </div>
+            
+            <div class="developer-info">
+                <div class="developer-avatar">
+                    <img src="assets/sadiq.jpg" alt="ABUBAKAR YAHAYA BARAYA" class="developer-photo">
+                </div>
+                
+                <div class="developer-details">
+                    <h3 class="developer-name">ABUBAKAR YAHAYA BARAYA</h3>
+                    <p class="developer-title">Cybersecurity Enthusiast & Bug Bounty Hunter</p>
+                    
+                    <div class="developer-bio">
+                        <p class="bio-text">
+                            A passionate cybersecurity enthusiast from Gombe State, Nigeria, dedicated to making the digital world safer. 
+                            With 2-3 years of experience in cybersecurity and bug bounty hunting, I built ScamBuster to combat the 
+                            rising scam epidemic in Nigeria. My mission is to protect businesses and individuals from sophisticated 
+                            digital threats through innovative AI-powered solutions.
+                        </p>
+                    </div>
+                    
+                    <div class="developer-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">3+</span>
+                            <span class="stat-label">Years Experience</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">Junior</span>
+                            <span class="stat-label">Bug Bounty Level</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">Security Focused</span>
+                        </div>
+                    </div>
+                    
+                    <div class="developer-skills">
+                        <h4>Expertise & Skills</h4>
+                        <div class="skills-grid">
+                            <span class="skill-tag">Cybersecurity</span>
+                            <span class="skill-tag">Bug Bounty</span>
+                            <span class="skill-tag">Penetration Testing</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">AI/ML</span>
+                            <span class="skill-tag">Web Security</span>
+                            <span class="skill-tag">Threat Detection</span>
+                        </div>
+                    </div>
+                    
+                    <div class="developer-hobbies">
+                        <h4>When Not Coding</h4>
+                        <div class="hobbies-grid">
+                            <span class="hobby-tag"><i class="fas fa-chess"></i> Chess</span>
+                            <span class="hobby-tag"><i class="fas fa-gamepad"></i> CODM</span>
+                            <span class="hobby-tag"><i class="fas fa-tv"></i> Anime</span>
+                        </div>
+                    </div>
+                    
+                    <div class="developer-contact">
+                        <h4>Get In Touch</h4>
+                        <div class="contact-links">
+                            <a href="mailto:cerdiqhbaraya@gmail.com" class="contact-link">
+                                <i class="fas fa-envelope"></i>
+                                cerdiqhbaraya@gmail.com
+                            </a>
+                            <a href="https://x.com/cerdiqh" class="contact-link">
+                                <i class="fab fa-x-twitter"></i>
+                                @cerdiqh
+                            </a>
+                            <a href="https://github.com/cerdiqh" class="contact-link">
+                                <i class="fab fa-github"></i>
+                                GitHub
+                            </a>
+                            <a href="https://www.linkedin.com/in/abubakar-baraya-34b041353" class="contact-link">
+                                <i class="fab fa-linkedin"></i>
+                                LinkedIn
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="credits-footer">
+                <p class="credits-message">
+                    "In cybersecurity, the best defense is a good offense. Stay vigilant, stay secure." 
+                    <span class="signature">- ABUBAKAR YAHAYA BARAYA</span>
+                </p>
+                <button class="back-to-top" onclick="scrollToTop()">
+                    <i class="fas fa-arrow-up"></i>
+                    Back to Top
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
 

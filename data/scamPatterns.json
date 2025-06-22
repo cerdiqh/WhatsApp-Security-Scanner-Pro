@@ -1,0 +1,88 @@
+[
+  {
+    "id": "urgency",
+    "name": "Urgency Patterns",
+    "regex": "\\b(urgent|immediately|asap|today only|quick|fast|hurry|emergency|before|deadline|traveling|leaving|flight)\\b",
+    "risk": 0.75,
+    "description": "Creates false urgency to pressure quick decisions",
+    "examples": [
+      "urgent",
+      "immediately",
+      "asap",
+      "today only"
+    ]
+  },
+  {
+    "id": "bulk",
+    "name": "Bulk Purchase Requests",
+    "regex": "\\b(bulk|large quantity|wholesale|500|1000|many pieces|full container)\\b",
+    "risk": 0.65,
+    "description": "Fake bulk orders to build false trust",
+    "examples": [
+      "bulk",
+      "large quantity",
+      "wholesale"
+    ]
+  },
+  {
+    "id": "account",
+    "name": "Account Details Requests",
+    "regex": "\\b(account (number|details)|bank (info|details)|send (your|me) (account|bank)|your account)\\b",
+    "risk": 0.85,
+    "description": "Direct attempt to get banking information",
+    "examples": [
+      "account details",
+      "bank info",
+      "send your account"
+    ]
+  },
+  {
+    "id": "payment",
+    "name": "Payment Confirmation Claims",
+    "regex": "\\b((already|i've) paid|payment (done|made|sent)|see (proof|evidence)|transfer receipt)\\b",
+    "risk": 0.8,
+    "description": "Claims payment was made without verification",
+    "examples": [
+      "already paid",
+      "payment done",
+      "see proof"
+    ]
+  },
+  {
+    "id": "government",
+    "name": "Government Impersonation",
+    "regex": "\\b(efcc|cbn|ndic|firs|federal|government|ministry|contract|supply)\\b",
+    "risk": 0.9,
+    "description": "Impersonating government agencies for credibility",
+    "examples": [
+      "efcc",
+      "federal",
+      "government contract"
+    ]
+  },
+  {
+    "id": "foreign",
+    "name": "Foreign Buyer Patterns",
+    "regex": "\\b(dubai|china|usa|uk|foreign|international|import|export|shipping)\\b",
+    "risk": 0.65,
+    "description": "Foreign buyer scams common in Nigeria",
+    "examples": [
+      "dubai",
+      "china",
+      "foreign buyer"
+    ]
+  },
+  {
+    "id": "grammar",
+    "name": "Poor Grammar Indicators",
+    "regex": "\\b(hello sir|dear (sir|madam)|kindly|revert back|pls|plz)\\b",
+    "risk": 0.4,
+    "description": "Unnatural language common in scam messages",
+    "examples": [
+      "hello sir",
+      "dear sir",
+      "kindly",
+      "pls"
+    ]
+  }
+]

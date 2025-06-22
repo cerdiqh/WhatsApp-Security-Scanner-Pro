@@ -1,0 +1,22 @@
+[
+  {
+    "id": "1750510173749",
+    "email": "cerdiqhbaraya@gmail.com",
+    "password": "$2b$10$/80MNpVVZhJtJ0y821V..eDYzS3LAdUTAE9Xyeh6fzgDB3CO5/QYq",
+    "name": "ABUBAKAR BARAYA",
+    "businessType": "other",
+    "createdAt": "2025-06-21T12:49:33.750Z",
+    "subscription": "pro",
+    "scanCount": 1
+  },
+  {
+    "id": "1750530615400",
+    "email": "yusrahabubakarminangi@gmail.com",
+    "password": "$2b$10$ZkqIawbVLKWbc6xc8JCxS.dxvG.ISfLxP74WZ.lPYgkk6rijJYkLq",
+    "name": "YUSRAH MINANGI",
+    "businessType": "tech",
+    "createdAt": "2025-06-21T18:30:15.401Z",
+    "subscription": "free",
+    "scanCount": 4
+  }
+]

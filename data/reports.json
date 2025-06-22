@@ -1,0 +1,244 @@
+[
+  {
+    "id": "1750510588639",
+    "userId": "1750510173749",
+    "message": "\"Hello sir, I want to buy your products in large quantity. Send your account details now for urgent payment. I'm traveling today.\"",
+    "phone": "+2348012345678",
+    "name": "Mike Johnson",
+    "businessType": "retail",
+    "analysis": {
+      "riskLevel": "MEDIUM",
+      "confidence": 80,
+      "riskScore": 60,
+      "riskDescription": "Analysis complete. Risk level: MEDIUM",
+      "threatIndicators": [
+        "Urgent payment request",
+        "Large quantity request",
+        "Account details request"
+      ],
+      "recommendations": [
+        "Proceed with extreme caution",
+        "Verify sender identity through other channels",
+        "Request additional verification",
+        "Avoid sharing sensitive information"
+      ],
+      "phoneAnalysis": {
+        "location": "Nigeria",
+        "carrier": "MTN/Globacom/Airtel",
+        "status": "CLEAN"
+      },
+      "languageAnalysis": {
+        "language": "English",
+        "grammarScore": 80
+      }
+    },
+    "timestamp": "2025-06-21T12:56:28.639Z"
+  },
+  {
+    "id": "1750532642847",
+    "userId": "1750530615400",
+    "message": "i want money from you sir",
+    "analysis": {
+      "riskLevel": "LOW",
+      "confidence": 85,
+      "riskScore": 10,
+      "riskDescription": "Analysis complete. Risk level: LOW",
+      "threatIndicators": [
+        "Poor grammar/spelling"
+      ],
+      "recommendations": [
+        "Message appears safe",
+        "Standard business practices apply",
+        "Maintain normal security protocols"
+      ],
+      "phoneAnalysis": {
+        "location": "Unknown",
+        "carrier": "Unknown",
+        "status": "CLEAN"
+      },
+      "languageAnalysis": {
+        "language": "English",
+        "grammarScore": 100
+      }
+    },
+    "timestamp": "2025-06-21T19:04:02.847Z"
+  },
+  {
+    "id": "1750533646422",
+    "userId": "1750530615400",
+    "message": "\"Hello sir, I am Prince from Nigeria. I have $10 million to transfer to your account. Please send your bank details urgently. This is very important.\"",
+    "analysis": {
+      "riskLevel": "HIGH",
+      "confidence": 98,
+      "riskScore": 100,
+      "riskDescription": "AI Analysis: HIGH risk detected with 98% confidence",
+      "threatIndicators": [
+        "Financial information request",
+        "Authority impersonation",
+        "Poor grammar/spelling detected",
+        "Overly formal language",
+        "Authority appeal tactics"
+      ],
+      "recommendations": [
+        "🚨 CRITICAL: DO NOT proceed with this transaction",
+        "🔒 Block this number immediately",
+        "📞 Report to authorities if money was sent",
+        "🏦 Contact your bank if account details were shared",
+        "📱 Save all evidence for investigation"
+      ],
+      "aiInsights": [
+        "Detected financial scam pattern",
+        "Detected authority manipulation",
+        "Unnatural language patterns identified",
+        "Formal language manipulation detected",
+        "",
+        "Authority manipulation detected",
+        "High frequency of scam-related keywords"
+      ],
+      "phoneAnalysis": {
+        "status": "No phone provided",
+        "risk": "Unknown"
+      },
+      "languageAnalysis": {
+        "grammarScore": 65,
+        "sentenceCount": 4,
+        "wordCount": 26,
+        "languageComplexity": "Low",
+        "grammarErrors": 7
+      },
+      "businessContext": {
+        "industryRiskScore": 0,
+        "targetedPatterns": 1
+      },
+      "geographicContext": {
+        "phoneCountry": "Unknown",
+        "geographicRiskScore": 0,
+        "detectedRegions": []
+      },
+      "sentimentAnalysis": {
+        "positiveWords": 0,
+        "negativeWords": 1,
+        "emotionalWords": 1,
+        "overallSentiment": "Negative"
+      },
+      "patternAnalysis": {
+        "urgencyScore": 0,
+        "financialScore": 40,
+        "authorityScore": 0
+      }
+    },
+    "timestamp": "2025-06-21T19:20:46.422Z"
+  },
+  {
+    "id": "1750534012079",
+    "userId": "1750530615400",
+    "message": "URGENT: Your bank account has been compromised! Click here immediately to secure your funds: bit.ly/fake-bank-link. Call +234-123-4567 NOW or lose everything!",
+    "analysis": {
+      "riskLevel": "MEDIUM",
+      "confidence": 90,
+      "riskScore": 60,
+      "riskDescription": "AI Analysis: MEDIUM risk detected with 90% confidence",
+      "threatIndicators": [
+        "High urgency pressure tactics",
+        "Authority appeal tactics"
+      ],
+      "recommendations": [
+        "⚠️ Proceed with extreme caution",
+        "🔍 Verify sender identity through other channels",
+        "📋 Request additional verification",
+        "🚫 Avoid sharing sensitive information",
+        "📞 Contact the supposed organization directly"
+      ],
+      "aiInsights": [
+        "Detected urgency manipulation pattern",
+        "",
+        "Authority manipulation detected",
+        "Moderate frequency of suspicious keywords"
+      ],
+      "phoneAnalysis": {
+        "status": "No phone provided",
+        "risk": "Unknown"
+      },
+      "languageAnalysis": {
+        "grammarScore": 60,
+        "sentenceCount": 4,
+        "wordCount": 21,
+        "languageComplexity": "Low",
+        "grammarErrors": 12
+      },
+      "businessContext": {
+        "industryRiskScore": 0,
+        "targetedPatterns": 1
+      },
+      "geographicContext": {
+        "phoneCountry": "Unknown",
+        "geographicRiskScore": 0,
+        "detectedRegions": []
+      },
+      "sentimentAnalysis": {
+        "positiveWords": 0,
+        "negativeWords": 1,
+        "emotionalWords": 0,
+        "overallSentiment": "Negative"
+      },
+      "patternAnalysis": {
+        "urgencyScore": 25,
+        "financialScore": 0,
+        "authorityScore": 0
+      }
+    },
+    "timestamp": "2025-06-21T19:26:52.079Z"
+  },
+  {
+    "id": "1750534247430",
+    "userId": "1750530615400",
+    "message": "dfhgkl",
+    "analysis": {
+      "riskLevel": "LOW",
+      "confidence": 70,
+      "riskScore": 0,
+      "riskDescription": "AI Analysis: LOW risk detected with 70% confidence",
+      "threatIndicators": [],
+      "recommendations": [
+        "✅ Message appears safe",
+        "📋 Standard business practices apply",
+        "🛡️ Maintain normal security protocols"
+      ],
+      "aiInsights": [
+        ""
+      ],
+      "phoneAnalysis": {
+        "status": "No phone provided",
+        "risk": "Unknown"
+      },
+      "languageAnalysis": {
+        "grammarScore": 100,
+        "sentenceCount": 0,
+        "wordCount": 1,
+        "languageComplexity": "Low",
+        "grammarErrors": 0
+      },
+      "businessContext": {
+        "industryRiskScore": 0,
+        "targetedPatterns": 1
+      },
+      "geographicContext": {
+        "phoneCountry": "Unknown",
+        "geographicRiskScore": 0,
+        "detectedRegions": []
+      },
+      "sentimentAnalysis": {
+        "positiveWords": 0,
+        "negativeWords": 0,
+        "emotionalWords": 0,
+        "overallSentiment": "Positive"
+      },
+      "patternAnalysis": {
+        "urgencyScore": 0,
+        "financialScore": 0,
+        "authorityScore": 0
+      }
+    },
+    "timestamp": "2025-06-21T19:30:47.430Z"
+  }
+]

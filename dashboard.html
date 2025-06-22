@@ -1,0 +1,1312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - ScamBuster</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="dashboard-page">
+    <!-- Navigation -->
+    <nav class="navbar dashboard-nav">
+        <div class="nav-container">
+            <div class="nav-left">
+                <div class="nav-logo">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>ScamBuster</span>
+                </div>
+            </div>
+            <div class="nav-right">
+                <!-- Dark Mode Toggle -->
+                <div class="theme-toggle">
+                    <button class="theme-toggle-btn" id="themeToggle" onclick="toggleTheme()">
+                        <div class="toggle-track">
+                            <div class="toggle-thumb">
+                                <i class="fas fa-sun light-icon"></i>
+                                <i class="fas fa-moon dark-icon"></i>
+                            </div>
+                        </div>
+                    </button>
+                </div>
+                
+                <!-- User Menu -->
+                <div class="user-menu">
+                    <button class="user-btn" onclick="toggleUserMenu()">
+                        <i class="fas fa-user-circle"></i>
+                        <span id="userName">User</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="user-dropdown" id="userDropdown">
+                        <a href="#" onclick="showUserDashboard()">
+                            <i class="fas fa-chart-line"></i>
+                            Dashboard
+                        </a>
+                        <a href="#" onclick="showSection('settings')">
+                            <i class="fas fa-cog"></i>
+                            Settings
+                        </a>
+                        <a href="#" onclick="logout()">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Logout
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <div class="sidebar-header">
+                <h3>Quick Actions</h3>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#dashboard" class="sidebar-link active" data-section="dashboard">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#scan" class="sidebar-link" data-section="scan">
+                    <i class="fas fa-search"></i>
+                    <span>Scan Messages</span>
+                </a>
+                <a href="#reports" class="sidebar-link" data-section="reports">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Reports</span>
+                </a>
+                <a href="#community" class="sidebar-link" data-section="community">
+                    <i class="fas fa-users"></i>
+                    <span>Community</span>
+                </a>
+                <a href="#training" class="sidebar-link" data-section="training">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Training</span>
+                </a>
+                <a href="#settings" class="sidebar-link" data-section="settings">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+                <a href="#analytics" class="sidebar-link" data-section="analytics">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Analytics</span>
+                </a>
+                <a href="#integrations" class="sidebar-link" data-section="integrations">
+                    <i class="fas fa-plug"></i>
+                    <span>Integrations</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <div class="dashboard-content">
+            <!-- Dashboard Section -->
+            <section id="dashboard" class="content-section active">
+                <div class="section-header">
+                    <h1>Welcome back, <span id="welcomeName">User</span>! 👋</h1>
+                    <p>Your security dashboard overview</p>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Total Scans</h3>
+                            <div class="stat-number" id="totalScans">0</div>
+                            <div class="stat-change positive">+12% this week</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Threats Detected</h3>
+                            <div class="stat-number" id="threatsDetected">0</div>
+                            <div class="stat-change negative">+3 this week</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Success Rate</h3>
+                            <div class="stat-number" id="successRate">99.2%</div>
+                            <div class="stat-change positive">+0.3% this week</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-money-bill-wave"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Money Saved</h3>
+                            <div class="stat-number" id="moneySaved">₦0</div>
+                            <div class="stat-change positive">+₦50K this week</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="quick-actions">
+                    <h2>Quick Actions</h2>
+                    <div class="actions-grid">
+                        <button class="action-card" onclick="showScanModal()">
+                            <i class="fas fa-search"></i>
+                            <h3>Scan Message</h3>
+                            <p>Check a suspicious WhatsApp message</p>
+                        </button>
+                        <button class="action-card" onclick="showReportModal()">
+                            <i class="fas fa-flag"></i>
+                            <h3>Report Scammer</h3>
+                            <p>Report a new scammer number</p>
+                        </button>
+                        <button class="action-card" onclick="showCommunityReportModal()">
+                            <i class="fas fa-users"></i>
+                            <h3>Community Report</h3>
+                            <p>Submit report to community</p>
+                        </button>
+                        <button class="action-card" onclick="showTrainingModal()">
+                            <i class="fas fa-graduation-cap"></i>
+                            <h3>Security Training</h3>
+                            <p>Learn about latest scam tactics</p>
+                        </button>
+                        <button class="action-card" onclick="showSubscriptionModal()">
+                            <i class="fas fa-crown"></i>
+                            <h3>Upgrade Plan</h3>
+                            <p>Get premium features</p>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="recent-activity">
+                    <h2>Recent Activity</h2>
+                    <div class="activity-list" id="activityList">
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="activity-content">
+                                <h4>Message scanned successfully</h4>
+                                <p>Low risk detected - Safe to proceed</p>
+                                <span class="activity-time">2 minutes ago</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon warning">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <div class="activity-content">
+                                <h4>High risk threat detected</h4>
+                                <p>Blocked potential scam attempt</p>
+                                <span class="activity-time">1 hour ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Scan Section -->
+            <section id="scan" class="content-section">
+                <div class="section-header">
+                    <h1>Scan WhatsApp Messages</h1>
+                    <p>Analyze suspicious messages for potential threats</p>
+                </div>
+
+                <div class="scan-container">
+                    <div class="scan-form">
+                        <div class="form-group">
+                            <label for="messageText">Message Content</label>
+                            <textarea id="messageText" placeholder="Paste the suspicious WhatsApp message here..." rows="6"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="senderNumber">Sender Phone Number (Optional)</label>
+                            <input type="tel" id="senderNumber" placeholder="+234 801 234 5678">
+                        </div>
+                        <button class="btn-primary btn-full" onclick="scanMessage()">
+                            <i class="fas fa-search"></i>
+                            Scan Message
+                        </button>
+                    </div>
+
+                    <div class="scan-result" id="scanResult" style="display: none;">
+                        <div class="result-header">
+                            <h3>🤖 AI Scan Results</h3>
+                            <div class="risk-level" id="riskLevel">
+                                <span class="risk-badge" id="riskBadge">Low Risk</span>
+                            </div>
+                        </div>
+                        
+                        <!-- AI Confidence Indicator -->
+                        <div class="ai-confidence" id="aiConfidence" style="display: none;">
+                            <div class="confidence-bar">
+                                <div class="confidence-fill" id="confidenceFill" style="width: 0%"></div>
+                            </div>
+                            <div class="confidence-text" id="confidenceText">AI Confidence: 0%</div>
+                        </div>
+                        
+                        <div class="result-content">
+                            <!-- Risk Assessment -->
+                            <div class="result-item">
+                                <h4>🎯 Risk Assessment</h4>
+                                <p id="riskAssessment">This message appears to be safe.</p>
+                            </div>
+                            
+                            <!-- Threat Indicators -->
+                            <div class="result-item" id="threatIndicatorsSection" style="display: none;">
+                                <h4>🚨 Threat Indicators</h4>
+                                <ul id="threatIndicators">
+                                    <li>No threats detected</li>
+                                </ul>
+                            </div>
+                            
+                            <!-- AI Insights -->
+                            <div class="result-item" id="aiInsightsSection" style="display: none;">
+                                <h4>🤖 AI Insights</h4>
+                                <ul id="aiInsights">
+                                    <li>No AI insights available</li>
+                                </ul>
+                            </div>
+                            
+                            <!-- Pattern Analysis -->
+                            <div class="result-item" id="patternAnalysisSection" style="display: none;">
+                                <h4>📊 Pattern Analysis</h4>
+                                <div class="pattern-grid" id="patternGrid">
+                                    <div class="pattern-card">
+                                        <div class="pattern-score" id="urgencyScore">0</div>
+                                        <div class="pattern-label">Urgency Score</div>
+                                    </div>
+                                    <div class="pattern-card">
+                                        <div class="pattern-score" id="financialScore">0</div>
+                                        <div class="pattern-label">Financial Score</div>
+                                    </div>
+                                    <div class="pattern-card">
+                                        <div class="pattern-score" id="authorityScore">0</div>
+                                        <div class="pattern-label">Authority Score</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Language Analysis -->
+                            <div class="result-item" id="languageAnalysisSection" style="display: none;">
+                                <h4>📝 Language Analysis</h4>
+                                <div class="language-metrics" id="languageMetrics">
+                                    <div class="metric-card">
+                                        <div class="metric-value" id="grammarScore">0%</div>
+                                        <div class="metric-label">Grammar Score</div>
+                                    </div>
+                                    <div class="metric-card">
+                                        <div class="metric-value" id="wordCount">0</div>
+                                        <div class="metric-label">Word Count</div>
+                                    </div>
+                                    <div class="metric-card">
+                                        <div class="metric-value" id="complexity">Low</div>
+                                        <div class="metric-label">Complexity</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Sentiment Analysis -->
+                            <div class="result-item" id="sentimentAnalysisSection" style="display: none;">
+                                <h4>😊 Sentiment Analysis</h4>
+                                <div class="sentiment-metrics" id="sentimentMetrics">
+                                    <div class="metric-card">
+                                        <div class="metric-value" id="sentimentOverall">Positive</div>
+                                        <div class="metric-label">Overall Sentiment</div>
+                                    </div>
+                                    <div class="metric-card">
+                                        <div class="metric-value" id="positiveWords">0</div>
+                                        <div class="metric-label">Positive Words</div>
+                                    </div>
+                                    <div class="metric-card">
+                                        <div class="metric-value" id="negativeWords">0</div>
+                                        <div class="metric-label">Negative Words</div>
+                                    </div>
+                                    <div class="metric-card">
+                                        <div class="metric-value" id="emotionalWords">0</div>
+                                        <div class="metric-label">Emotional Words</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Phone Analysis -->
+                            <div class="result-item" id="phoneAnalysisSection" style="display: none;">
+                                <h4>📱 Phone Analysis</h4>
+                                <div class="phone-metrics" id="phoneMetrics">
+                                    <div class="metric-card">
+                                        <div class="metric-value" id="phoneCountry">Unknown</div>
+                                        <div class="metric-label">Country</div>
+                                    </div>
+                                    <div class="metric-card">
+                                        <div class="metric-value" id="phoneStatus">Unknown</div>
+                                        <div class="metric-label">Status</div>
+                                    </div>
+                                    <div class="metric-card">
+                                        <div class="metric-value" id="phonePattern">Normal</div>
+                                        <div class="metric-label">Pattern</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Business Context -->
+                            <div class="result-item" id="businessContextSection" style="display: none;">
+                                <h4>🏢 Business Context</h4>
+                                <div class="business-metrics" id="businessMetrics">
+                                    <div class="metric-card">
+                                        <div class="metric-value" id="businessType">General</div>
+                                        <div class="metric-label">Business Type</div>
+                                    </div>
+                                    <div class="metric-card">
+                                        <div class="metric-value" id="industryRisk">0</div>
+                                        <div class="metric-label">Industry Risk</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Geographic Context -->
+                            <div class="result-item" id="geographicContextSection" style="display: none;">
+                                <h4>🌍 Geographic Context</h4>
+                                <div class="geo-metrics" id="geoMetrics">
+                                    <div class="metric-card">
+                                        <div class="metric-value" id="geoCountry">Unknown</div>
+                                        <div class="metric-label">Phone Country</div>
+                                    </div>
+                                    <div class="metric-card">
+                                        <div class="metric-value" id="geoRisk">0</div>
+                                        <div class="metric-label">Geographic Risk</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Recommendations -->
+                            <div class="result-item">
+                                <h4>💡 Recommendations</h4>
+                                <div id="recommendation">You can proceed with this conversation.</div>
+                            </div>
+                        </div>
+                        
+                        <div class="result-actions">
+                            <button class="btn-secondary" onclick="reportScammer()">
+                                <i class="fas fa-flag"></i>
+                                Report Scammer
+                            </button>
+                            <button class="btn-primary" onclick="scanAnother()">
+                                <i class="fas fa-search"></i>
+                                Scan Another
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Reports Section -->
+            <section id="reports" class="content-section">
+                <div class="section-header">
+                    <h1>My Reports</h1>
+                    <p>View your scan history and reports</p>
+                </div>
+
+                <div class="reports-container">
+                    <div class="reports-filters">
+                        <select id="reportFilter" onchange="filterReports()">
+                            <option value="all">All Reports</option>
+                            <option value="high">High Risk</option>
+                            <option value="medium">Medium Risk</option>
+                            <option value="low">Low Risk</option>
+                        </select>
+                        <button class="btn-secondary" onclick="exportReports()">
+                            <i class="fas fa-download"></i>
+                            Export
+                        </button>
+                    </div>
+
+                    <div class="reports-list" id="reportsList">
+                        <!-- Reports will be loaded here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Community Section -->
+            <section id="community" class="content-section">
+                <div class="section-header">
+                    <h1>Community Hub</h1>
+                    <p>Contribute to the community and help others stay safe</p>
+                </div>
+
+                <div class="community-container">
+                    <!-- Community Stats -->
+                    <div class="community-stats">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Community Members</h3>
+                                <div class="stat-number" id="communityMembers">1,247</div>
+                                <div class="stat-change positive">+23 this week</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-flag"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Reports Submitted</h3>
+                                <div class="stat-number" id="totalReports">5,892</div>
+                                <div class="stat-change positive">+156 this week</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-shield-check"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Verified Scams</h3>
+                                <div class="stat-number" id="verifiedScams">3,421</div>
+                                <div class="stat-change positive">+89 this week</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="community-actions">
+                        <button class="btn-primary" onclick="showCommunityReportModal()">
+                            <i class="fas fa-plus"></i>
+                            Submit Report
+                        </button>
+                        <button class="btn-secondary" onclick="showLeaderboard()">
+                            <i class="fas fa-trophy"></i>
+                            View Leaderboard
+                        </button>
+                        <button class="btn-secondary" onclick="showMyReputation()">
+                            <i class="fas fa-star"></i>
+                            My Reputation
+                        </button>
+                    </div>
+
+                    <!-- Community Reports -->
+                    <div class="community-reports">
+                        <div class="section-subheader">
+                            <h2>Recent Community Reports</h2>
+                            <div class="filter-controls">
+                                <select id="communityFilter" onchange="filterCommunityReports()">
+                                    <option value="all">All Reports</option>
+                                    <option value="pending">Pending</option>
+                                    <option value="verified">Verified</option>
+                                    <option value="rejected">Rejected</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="community-reports-list" id="communityReportsList">
+                            <!-- Community reports will be loaded here -->
+                        </div>
+
+                        <div class="load-more">
+                            <button class="btn-secondary" onclick="loadMoreCommunityReports()">
+                                <i class="fas fa-plus"></i>
+                                Load More Reports
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Training Section -->
+            <section id="training" class="content-section">
+                <div class="section-header">
+                    <h1>Security Training</h1>
+                    <p>Learn about the latest scam tactics and how to stay safe</p>
+                </div>
+
+                <div class="training-grid">
+                    <div class="training-card">
+                        <div class="training-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h3>Phone Number Scams</h3>
+                        <p>Learn how scammers use fake numbers and how to verify them.</p>
+                        <button class="btn-secondary" onclick="startTraining('phone')">Start Training</button>
+                    </div>
+                    <div class="training-card">
+                        <div class="training-icon">
+                            <i class="fas fa-money-bill"></i>
+                        </div>
+                        <h3>Payment Scams</h3>
+                        <p>Identify fake payment requests and money transfer scams.</p>
+                        <button class="btn-secondary" onclick="startTraining('payment')">Start Training</button>
+                    </div>
+                    <div class="training-card">
+                        <div class="training-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <h3>Business Scams</h3>
+                        <p>Protect your business from fake orders and supplier scams.</p>
+                        <button class="btn-secondary" onclick="startTraining('business')">Start Training</button>
+                    </div>
+                    <div class="training-card">
+                        <div class="training-icon">
+                            <i class="fas fa-user-secret"></i>
+                        </div>
+                        <h3>Social Engineering</h3>
+                        <p>Understand how scammers manipulate people psychologically.</p>
+                        <button class="btn-secondary" onclick="startTraining('social')">Start Training</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section id="settings" class="content-section">
+                <div class="section-header">
+                    <h1>Account Settings</h1>
+                    <p>Manage your account and security preferences</p>
+                </div>
+
+                <div class="settings-container">
+                    <div class="settings-card">
+                        <h3>Profile Information</h3>
+                        <form class="settings-form">
+                            <div class="form-group">
+                                <label for="profileName">Full Name</label>
+                                <input type="text" id="profileName" value="John Doe">
+                            </div>
+                            <div class="form-group">
+                                <label for="profileEmail">Email Address</label>
+                                <input type="email" id="profileEmail" value="john@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="profileBusiness">Business Type</label>
+                                <select id="profileBusiness">
+                                    <option value="retail">Retail/Shopping</option>
+                                    <option value="services">Services</option>
+                                    <option value="manufacturing">Manufacturing</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn-primary">Update Profile</button>
+                        </form>
+                    </div>
+
+                    <div class="settings-card">
+                        <h3>Security Preferences</h3>
+                        <div class="settings-options">
+                            <label class="setting-option">
+                                <input type="checkbox" checked>
+                                <span class="checkmark"></span>
+                                Email notifications for threats
+                            </label>
+                            <label class="setting-option">
+                                <input type="checkbox" checked>
+                                <span class="checkmark"></span>
+                                SMS alerts for high-risk messages
+                            </label>
+                            <label class="setting-option">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                Weekly security reports
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Analytics Section -->
+            <section id="analytics" class="content-section">
+                <div class="section-header">
+                    <h1><i class="fas fa-chart-line"></i> Advanced Analytics</h1>
+                    <p>Real-time insights and performance metrics</p>
+                </div>
+                
+                <!-- Analytics Dashboard -->
+                <div class="analytics-dashboard">
+                    <!-- Stats Cards -->
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3 id="total-scans">0</h3>
+                                <p>Total Scans</p>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon high-risk">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3 id="high-risk-scans">0</h3>
+                                <p>High Risk Detected</p>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-bullseye"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3 id="avg-confidence">0%</h3>
+                                <p>Avg Confidence</p>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-tachometer-alt"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3 id="success-rate">0%</h3>
+                                <p>Success Rate</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Charts Section -->
+                    <div class="charts-section">
+                        <div class="chart-container">
+                            <h3>Daily Scan Trends</h3>
+                            <canvas id="trends-chart"></canvas>
+                        </div>
+                        
+                        <div class="chart-container">
+                            <h3>Risk Distribution</h3>
+                            <canvas id="risk-chart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <!-- Performance Metrics -->
+                    <div class="performance-metrics">
+                        <h3>Performance Insights</h3>
+                        <div class="metrics-grid">
+                            <div class="metric-item">
+                                <span class="metric-label">Average Scan Time</span>
+                                <span class="metric-value" id="avg-scan-time">0.00s</span>
+                            </div>
+                            <div class="metric-item">
+                                <span class="metric-label">Detection Accuracy</span>
+                                <span class="metric-value" id="detection-accuracy">0%</span>
+                            </div>
+                            <div class="metric-item">
+                                <span class="metric-label">User Engagement</span>
+                                <span class="metric-value" id="user-engagement">0%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Top Scam Patterns -->
+                    <div class="patterns-section">
+                        <h3>Top Detected Scam Patterns</h3>
+                        <div class="patterns-list" id="top-patterns">
+                            <!-- Patterns will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Scan History -->
+                <div class="scan-history-section">
+                    <div class="section-header">
+                        <h3>Scan History</h3>
+                        <button class="btn btn-secondary" onclick="exportReport()">
+                            <i class="fas fa-download"></i> Export Report
+                        </button>
+                    </div>
+                    <div class="history-table-container">
+                        <table class="history-table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Message Preview</th>
+                                    <th>Risk Level</th>
+                                    <th>Confidence</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="scan-history-tbody">
+                                <!-- History will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Integrations Section -->
+            <section id="integrations" class="content-section">
+                <div class="section-header">
+                    <h1><i class="fas fa-plug"></i> Integrations & Webhooks</h1>
+                    <p>Connect with external services for real-time alerts</p>
+                </div>
+                
+                <!-- Webhook Management -->
+                <div class="integrations-container">
+                    <div class="integration-card">
+                        <div class="integration-header">
+                            <h3><i class="fas fa-link"></i> Webhook Management</h3>
+                            <button class="btn btn-primary" onclick="showWebhookModal()">
+                                <i class="fas fa-plus"></i> Add Webhook
+                            </button>
+                        </div>
+                        <div class="webhooks-list" id="webhooks-list">
+                            <!-- Webhooks will be loaded here -->
+                        </div>
+                    </div>
+                    
+                    <!-- Third-party Integrations -->
+                    <div class="integrations-grid">
+                        <div class="integration-card">
+                            <div class="integration-icon">
+                                <i class="fab fa-slack"></i>
+                            </div>
+                            <h3>Slack Integration</h3>
+                            <p>Get real-time alerts in your Slack channels</p>
+                            <button class="btn btn-secondary" onclick="showSlackModal()">
+                                Configure Slack
+                            </button>
+                        </div>
+                        
+                        <div class="integration-card">
+                            <div class="integration-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <h3>Email Alerts</h3>
+                            <p>Receive email notifications for security alerts</p>
+                            <button class="btn btn-secondary" onclick="showEmailModal()">
+                                Configure Email
+                            </button>
+                        </div>
+                        
+                        <div class="integration-card">
+                            <div class="integration-icon">
+                                <i class="fas fa-chart-bar"></i>
+                            </div>
+                            <h3>API Usage</h3>
+                            <p>Monitor your API usage and rate limits</p>
+                            <button class="btn btn-secondary" onclick="showUsageModal()">
+                                View Usage
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Modals -->
+    <div id="scanModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Scan WhatsApp Message</h2>
+                <button class="modal-close" onclick="closeModal('scanModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="modalMessage">Message Content</label>
+                    <textarea id="modalMessage" placeholder="Paste the suspicious message here..." rows="4"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="modalNumber">Sender Number (Optional)</label>
+                    <input type="tel" id="modalNumber" placeholder="+234 801 234 5678">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeModal('scanModal')">Cancel</button>
+                <button class="btn-primary" onclick="scanFromModal()">Scan Message</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Community Report Modal -->
+    <div id="communityReportModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Submit Community Report</h2>
+                <button class="modal-close" onclick="closeModal('communityReportModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="reportPhoneNumber">Scammer Phone Number *</label>
+                    <input type="tel" id="reportPhoneNumber" placeholder="+234 801 234 5678" required>
+                </div>
+                <div class="form-group">
+                    <label for="reportMessage">Suspicious Message *</label>
+                    <textarea id="reportMessage" placeholder="Paste the suspicious message here..." rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="reportScamType">Scam Type *</label>
+                    <select id="reportScamType" required>
+                        <option value="">Select scam type</option>
+                        <option value="bulk_purchase">Bulk Purchase Scam</option>
+                        <option value="nigerian_prince">Nigerian Prince Scam</option>
+                        <option value="account_details">Account Details Request</option>
+                        <option value="urgent_payment">Urgent Payment</option>
+                        <option value="government_impersonation">Government Impersonation</option>
+                        <option value="foreign_buyer">Foreign Buyer Scam</option>
+                        <option value="investment">Investment Scam</option>
+                        <option value="lottery">Lottery/Prize Scam</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="reportDescription">Description</label>
+                    <textarea id="reportDescription" placeholder="Provide additional details about the scam..." rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="reportEvidence">Evidence (Optional)</label>
+                    <textarea id="reportEvidence" placeholder="Screenshots, links, or other evidence..." rows="2"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeModal('communityReportModal')">Cancel</button>
+                <button class="btn-primary" onclick="submitCommunityReport()">Submit Report</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Leaderboard Modal -->
+    <div id="leaderboardModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Community Leaderboard</h2>
+                <button class="modal-close" onclick="closeModal('leaderboardModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="leaderboard-tabs">
+                    <button class="tab-btn active" onclick="switchLeaderboardTab('points')">Top Points</button>
+                    <button class="tab-btn" onclick="switchLeaderboardTab('reports')">Most Reports</button>
+                    <button class="tab-btn" onclick="switchLeaderboardTab('verified')">Most Verified</button>
+                </div>
+                <div class="leaderboard-list" id="leaderboardList">
+                    <!-- Leaderboard will be loaded here -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeModal('leaderboardModal')">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reputation Modal -->
+    <div id="reputationModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>My Reputation</h2>
+                <button class="modal-close" onclick="closeModal('reputationModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="reputation-stats">
+                    <div class="reputation-card">
+                        <div class="reputation-level" id="userLevel">Beginner</div>
+                        <div class="reputation-points" id="userPoints">0 points</div>
+                        <div class="reputation-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+                            </div>
+                            <div class="progress-text" id="progressText">0 / 20 points to next level</div>
+                        </div>
+                    </div>
+                    <div class="reputation-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Reports Submitted:</span>
+                            <span class="detail-value" id="userReportsSubmitted">0</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Reports Verified:</span>
+                            <span class="detail-value" id="userReportsVerified">0</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Member Since:</span>
+                            <span class="detail-value" id="userMemberSince">Today</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="reputation-badges">
+                    <h3>Badges Earned</h3>
+                    <div class="badges-grid" id="userBadges">
+                        <!-- Badges will be loaded here -->
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeModal('reputationModal')">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Report Scammer Modal -->
+    <div id="reportModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Report Scammer</h2>
+                <button class="modal-close" onclick="closeModal('reportModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="reportPhone">Scammer Phone Number</label>
+                    <input type="tel" id="reportPhone" placeholder="+234 801 234 5678" required>
+                </div>
+                <div class="form-group">
+                    <label for="reportReason">Reason</label>
+                    <textarea id="reportReason" placeholder="Describe the scam or suspicious activity..." rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="reportEvidence">Evidence (optional)</label>
+                    <input type="file" id="reportEvidence" accept="image/*,application/pdf">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeModal('reportModal')">Cancel</button>
+                <button class="btn-primary" onclick="submitReportScammer()">Submit Report</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Security Training Modal -->
+    <div id="trainingModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Security Training</h2>
+                <button class="modal-close" onclick="closeModal('trainingModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="training-resources">
+                    <div class="resource-item" onclick="openTrainingResource('phone')">
+                        <div class="resource-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="resource-content">
+                            <h3>Phone Number Scams</h3>
+                            <p>Learn how scammers use fake numbers and how to verify them</p>
+                            <span class="resource-source">Google Scam Spotter</span>
+                        </div>
+                        <i class="fas fa-external-link-alt"></i>
+                    </div>
+                    
+                    <div class="resource-item" onclick="openTrainingResource('payment')">
+                        <div class="resource-icon">
+                            <i class="fas fa-money-bill"></i>
+                        </div>
+                        <div class="resource-content">
+                            <h3>Payment Scams</h3>
+                            <p>Identify fake payment requests and money transfer scams</p>
+                            <span class="resource-source">FTC Scam Alerts</span>
+                        </div>
+                        <i class="fas fa-external-link-alt"></i>
+                    </div>
+                    
+                    <div class="resource-item" onclick="openTrainingResource('business')">
+                        <div class="resource-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="resource-content">
+                            <h3>Business Scams</h3>
+                            <p>Protect your business from fake orders and supplier scams</p>
+                            <span class="resource-source">CyberAware Nigeria</span>
+                        </div>
+                        <i class="fas fa-external-link-alt"></i>
+                    </div>
+                    
+                    <div class="resource-item" onclick="openTrainingResource('social')">
+                        <div class="resource-icon">
+                            <i class="fas fa-user-secret"></i>
+                        </div>
+                        <div class="resource-content">
+                            <h3>Social Engineering</h3>
+                            <p>Understand how scammers manipulate people psychologically</p>
+                            <span class="resource-source">StaySafeOnline</span>
+                        </div>
+                        <i class="fas fa-external-link-alt"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeModal('trainingModal')">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Upgrade Plan Modal -->
+    <div id="subscriptionModal" class="modal">
+        <div class="modal-content subscription-modal">
+            <div class="modal-header">
+                <h2>Upgrade Your Plan</h2>
+                <button class="modal-close" onclick="closeModal('subscriptionModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="subscription-plans">
+                    <div class="plan-card" onclick="selectPlan('basic')">
+                        <div class="plan-header">
+                            <h3>Basic Shield</h3>
+                            <div class="plan-price">₦2,500<span>/month</span></div>
+                        </div>
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> 50 message scans per month</li>
+                            <li><i class="fas fa-check"></i> Basic threat detection</li>
+                            <li><i class="fas fa-check"></i> Email support</li>
+                            <li><i class="fas fa-check"></i> Educational resources</li>
+                        </ul>
+                        <div class="plan-action">
+                            <button class="btn-secondary">Select Plan</button>
+                        </div>
+                    </div>
+
+                    <div class="plan-card featured" onclick="selectPlan('pro')">
+                        <div class="plan-badge">Most Popular</div>
+                        <div class="plan-header">
+                            <h3>Pro Guard</h3>
+                            <div class="plan-price">₦5,500<span>/month</span></div>
+                        </div>
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> Unlimited message scans</li>
+                            <li><i class="fas fa-check"></i> Advanced AI detection</li>
+                            <li><i class="fas fa-check"></i> Phone number intelligence</li>
+                            <li><i class="fas fa-check"></i> Real-time alerts</li>
+                            <li><i class="fas fa-check"></i> Monthly reports</li>
+                            <li><i class="fas fa-check"></i> Priority support</li>
+                        </ul>
+                        <div class="plan-action">
+                            <button class="btn-primary">Select Plan</button>
+                        </div>
+                    </div>
+
+                    <div class="plan-card" onclick="selectPlan('enterprise')">
+                        <div class="plan-header">
+                            <h3>Enterprise Fortress</h3>
+                            <div class="plan-price">₦15,000<span>/month</span></div>
+                        </div>
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> Everything in Pro Guard</li>
+                            <li><i class="fas fa-check"></i> Multiple team members</li>
+                            <li><i class="fas fa-check"></i> Custom threat patterns</li>
+                            <li><i class="fas fa-check"></i> API access</li>
+                            <li><i class="fas fa-check"></i> Dedicated support</li>
+                            <li><i class="fas fa-check"></i> Training workshops</li>
+                        </ul>
+                        <div class="plan-action">
+                            <button class="btn-secondary">Select Plan</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeModal('subscriptionModal')">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- User Dashboard Modal -->
+    <div id="userDashboardModal" class="modal">
+        <div class="user-dashboard-modal">
+            <div class="user-dashboard-header">
+                <h2>📊 My Dashboard</h2>
+                <button class="user-dashboard-close" onclick="closeModal('userDashboardModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div id="enhancedStats">
+                <!-- Enhanced statistics will be loaded here -->
+                <div class="loading-placeholder">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>Loading your statistics...</p>
+                </div>
+            </div>
+            
+            <div class="dashboard-sections">
+                <div class="section-card">
+                    <h3>🎯 Recent Activity</h3>
+                    <div class="activity-timeline" id="userActivityTimeline">
+                        <!-- Recent activity will be loaded here -->
+                    </div>
+                </div>
+                
+                <div class="section-card">
+                    <h3>📈 Performance Insights</h3>
+                    <div class="insights-grid">
+                        <div class="insight-item">
+                            <div class="insight-icon">
+                                <i class="fas fa-shield-check"></i>
+                            </div>
+                            <div class="insight-content">
+                                <h4>Security Score</h4>
+                                <p>Based on your scanning patterns and threat detection</p>
+                                <div class="insight-value" id="securityScore">Calculating...</div>
+                            </div>
+                        </div>
+                        
+                        <div class="insight-item">
+                            <div class="insight-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="insight-content">
+                                <h4>Response Time</h4>
+                                <p>Average time to identify and report threats</p>
+                                <div class="insight-value" id="responseTime">Calculating...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Integration Modals -->
+    
+    <!-- Webhook Modal -->
+    <div class="integration-modal" id="webhookModal">
+        <div class="integration-modal-content">
+            <div class="integration-modal-header">
+                <h3><i class="fas fa-link"></i> Add Webhook</h3>
+                <button class="integration-modal-close" onclick="closeIntegrationModal('webhookModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form class="integration-form" id="webhookForm">
+                <div class="form-group">
+                    <label for="webhookUrl">Webhook URL</label>
+                    <input type="url" id="webhookUrl" name="url" required placeholder="https://your-domain.com/webhook">
+                </div>
+                <div class="form-group">
+                    <label for="webhookEvents">Events to Trigger</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="eventScanAlert" name="events" value="scan_alert" checked>
+                            <label for="eventScanAlert">Scan Alerts</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="eventHighRisk" name="events" value="high_risk_detected">
+                            <label for="eventHighRisk">High Risk Detected</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="eventNewReport" name="events" value="new_report">
+                            <label for="eventNewReport">New Community Report</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="webhookDescription">Description (Optional)</label>
+                    <input type="text" id="webhookDescription" name="description" placeholder="Webhook for security alerts">
+                </div>
+                <div class="integration-modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="closeIntegrationModal('webhookModal')">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Create Webhook</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Slack Integration Modal -->
+    <div class="integration-modal" id="slackModal">
+        <div class="integration-modal-content">
+            <div class="integration-modal-header">
+                <h3><i class="fab fa-slack"></i> Slack Integration</h3>
+                <button class="integration-modal-close" onclick="closeIntegrationModal('slackModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form class="integration-form" id="slackForm">
+                <div class="form-group">
+                    <label for="slackWebhookUrl">Slack Webhook URL</label>
+                    <input type="url" id="slackWebhookUrl" name="webhookUrl" required placeholder="https://hooks.slack.com/services/...">
+                    <small style="color: var(--text-secondary);">Get this from your Slack app settings</small>
+                </div>
+                <div class="form-group">
+                    <label for="slackChannel">Channel (Optional)</label>
+                    <input type="text" id="slackChannel" name="channel" placeholder="#security-alerts">
+                </div>
+                <div class="form-group">
+                    <label for="slackUsername">Bot Username (Optional)</label>
+                    <input type="text" id="slackUsername" name="username" placeholder="Security Scanner">
+                </div>
+                <div class="integration-modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="closeIntegrationModal('slackModal')">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Configure Slack</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Email Integration Modal -->
+    <div class="integration-modal" id="emailModal">
+        <div class="integration-modal-content">
+            <div class="integration-modal-header">
+                <h3><i class="fas fa-envelope"></i> Email Alerts</h3>
+                <button class="integration-modal-close" onclick="closeIntegrationModal('emailModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form class="integration-form" id="emailForm">
+                <div class="form-group">
+                    <label for="emailAddress">Email Address</label>
+                    <input type="email" id="emailAddress" name="email" required placeholder="alerts@yourcompany.com">
+                </div>
+                <div class="form-group">
+                    <label for="emailFrequency">Alert Frequency</label>
+                    <select id="emailFrequency" name="frequency" required>
+                        <option value="immediate">Immediate</option>
+                        <option value="hourly">Hourly Digest</option>
+                        <option value="daily">Daily Digest</option>
+                        <option value="weekly">Weekly Digest</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Alert Types</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="emailHighRisk" name="alertTypes" value="high_risk" checked>
+                            <label for="emailHighRisk">High Risk Detections</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="emailMediumRisk" name="alertTypes" value="medium_risk">
+                            <label for="emailMediumRisk">Medium Risk Detections</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="emailNewReports" name="alertTypes" value="new_reports">
+                            <label for="emailNewReports">New Community Reports</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="integration-modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="closeIntegrationModal('emailModal')">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Configure Email</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- API Usage Modal -->
+    <div class="integration-modal" id="usageModal">
+        <div class="integration-modal-content">
+            <div class="integration-modal-header">
+                <h3><i class="fas fa-chart-bar"></i> API Usage</h3>
+                <button class="integration-modal-close" onclick="closeIntegrationModal('usageModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="usage-stats" id="usageStats">
+                <!-- Usage stats will be loaded here -->
+            </div>
+            <div class="usage-details">
+                <h4>Rate Limits</h4>
+                <ul style="color: var(--text-secondary); margin: 1rem 0;">
+                    <li>API Requests: 100 per 15 minutes</li>
+                    <li>Scan Requests: 10 per minute</li>
+                    <li>Webhook Calls: 50 per hour</li>
+                </ul>
+            </div>
+            <div class="integration-modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closeIntegrationModal('usageModal')">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html> 
